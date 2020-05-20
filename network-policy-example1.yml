@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy                                #flannel does not support NetworkPolicy
+metadata:
+  name: network-policy-example
+
+spec:
+  podSelector:     #to select pod on which policy to be applied
+    matchLabels:
+      role: db
+
+  policyTypes:
+   - Ingress
+  ingress:
+   - from:
+      - podSelector:               #to select the pod from where the network is allowed
+          matchLabels:
+            role: api-pod
+
+     ports:
+      - protocol: TCP
+        port: 3306

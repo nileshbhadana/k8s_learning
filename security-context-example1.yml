@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: security-context-example
+
+spec:
+# securityContext:                      can be defined in spec and container section both 
+  # runAsUser: 1001                       but capabilities can be defined only at container level
+  containers:
+   - name: myapp
+     image: nginx
+     imagePullPolicy: IfNotPresent
+     securityContext:
+       runAsUser: 1001
+
+       capabilities:
+         add: ["MAC_ADMIN"]
