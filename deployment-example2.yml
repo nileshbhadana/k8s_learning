@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp2-dc
+  labels:
+    app: myapp2
+    type: front-end
+spec:
+  selector:
+    matchLabels:
+      app: myapp2
+      type: front-end
+  template:
+    metadata:
+      name: myapp2-pod
+      labels:
+        app: myapp2
+        type: front-end
+    spec:
+      containers:
+       - image: nginx
+         imagePullPolicy: IfNotPresent
+         name: nginx-container
+         resources:
+           requests:
+             memory: "1G"
+             cpu: 1
+           limits:
+             memory: "2G"
+             cpu: 2
+  replicas: 3
+

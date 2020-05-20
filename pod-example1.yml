@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-sleeper
+
+spec:
+  containers:
+   - name: ubuntu-sleeper
+     image: ubuntu
+     args: ["sleep","5"]    #replaces CMD
+     command: ["sleep"]     #replaces ENTRYPOINT
+     imagePullPolicy: IfNotPresent
+
+   #defining Environment variables 
+     env:
+       - name: KEY_NAME
+         value: value

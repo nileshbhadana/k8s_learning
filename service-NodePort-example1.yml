@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-NP-service
+
+spec:
+  type: NodePort
+  ports:
+   - targetPort: 80 #optional  Port on the pod
+     port: 80    #Required port of service object
+     nodePort: 30010 #optional Port on the node
+  
+  selector:
+    app: myapp
+    type: front-end
+
+
