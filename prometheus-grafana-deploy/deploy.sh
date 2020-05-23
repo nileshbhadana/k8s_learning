@@ -1,5 +1,6 @@
 sudo apt update -y
 sudo apt install nfs-kernel-server -y
+sudo mkdir /srv/nfs/kubedata -p
 sudo cp exports /etc/exports
 kubectl config set-context --current --namespace default
 kubectl create -f class.yaml -f deployment.yaml -f rbac.yaml
