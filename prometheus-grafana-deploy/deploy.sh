@@ -14,4 +14,5 @@ kubectl get all -n prometheus
 kubectl get all -n grafana
 
 echo "Access grafana over <master-ip>:32323"
+echo "Admin Password for grafana : thisisadminpassword"
 echo "Access Prometheus over <master-ip>:32322"
